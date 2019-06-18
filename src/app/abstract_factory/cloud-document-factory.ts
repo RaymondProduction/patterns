@@ -1,23 +1,15 @@
 export class CloudDocumentFactory{
-    static get PdfDocument(){
-        return 0;
-    }
-
-    static get DocDocument(){
-        return 1;
-    }
-
-    static get RtfDocument(){
-        return 2;
-    }
+    public static PDF = 0;
+    public static DOC = 1;
+    public static RTF = 2;
 
     getDocument(label: number){
         switch(label) {
-            case CloudDocumentFactory.RtfDocument:
-                    return new CloudDocumentRtf();
-            case CloudDocumentFactory.DocDocument:
+            case CloudDocumentFactory.RTF:
+                return new CloudDocumentRtf();
+            case CloudDocumentFactory.DOC:
                 return new CloudDocumentDoc();
-            case CloudDocumentFactory.PdfDocument:
+            case CloudDocumentFactory.PDF:
                 return new CloudDocumentPdf();
             default:
                 throw new Error('Document isn\'t recognized');
@@ -31,8 +23,8 @@ export class CloudDocument {
         this.type = type 
     }
 
-    public createDocument(type) {
-        console.log('Create,',type,' document');
+    public createDocument() {
+        console.log('Create,',this.type,' document');
     }
 }
 
@@ -54,3 +46,6 @@ class CloudDocumentPdf extends CloudDocument{
         super('Pdf');
     }
 }
+
+
+

@@ -1,23 +1,16 @@
 export default class ServerDocumentFactory{
-    static get PdfDocument(){
-        return 0;
-    }
+    public static PDF = 0;
+    public static DOC = 1;
+    public static RTF = 2;
 
-    static get DocDocument(){
-        return 1;
-    }
-
-    static get RtfDocument(){
-        return 2;
-    }
 
     getDocument(label: number){
         switch(label) {
-            case ServerDocumentFactory.RtfDocument:
+            case ServerDocumentFactory.RTF:
                     return new ServerDocumentRtf();
-            case ServerDocumentFactory.DocDocument:
+            case ServerDocumentFactory.DOC:
                 return new ServerDocumentDoc();
-            case ServerDocumentFactory.PdfDocument:
+            case ServerDocumentFactory.PDF:
                 return new ServerDocumentPdf();
             default:
                 throw new Error('Document isn\'t recognized');
